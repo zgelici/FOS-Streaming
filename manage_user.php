@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 
     $user->username = $_POST['username'];
     $user->password = $_POST['password'];
-
+    $user->expiredate = $_POST['expiredate'];
     $user->active = 0;
     if(isset($_POST['active'])) {
         $user->active = 1;
@@ -29,6 +29,10 @@ if (isset($_POST['submit'])) {
     else if (empty($_POST['password'])) {
         $message['type'] = "error";
         $message['message'] = "password is empty";
+    }
+     else if (empty($_POST['expiredate'])) {
+        $message['type'] = "error";
+        $message['message'] = "Expire Date is empty";
     }
     else if (empty($_POST['category'])) {
         $message['type'] = "error";
