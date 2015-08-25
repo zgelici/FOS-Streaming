@@ -28,6 +28,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Password</th>
+                        <th>Expire Date</th>
                         <th>Category</th>
                         <th>File</th>
                         <th>Action</th>
@@ -39,6 +40,7 @@
                             <td class="center">{{ $key+1 }}</td>
                             <td>{{ $user->username }}</td>
                             <td class="center">{{ $user->password }}</td>
+                            <td class="center">{{ $user->expiredate }}</td>
                             <td class="center">{{ $user->category_names }}</td>
                             <td class="center">
                                 <a href="getfile.php?m3u=true&id={{ $user->id }}" title="GET M3U"><span class="label label-success">M3U</span></a>
