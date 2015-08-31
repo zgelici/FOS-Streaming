@@ -56,17 +56,14 @@ if($stream->checker == 3) {
     $url =  $stream->streamurl3;
 }
 
-if($stream->restream == false) {
+$file = "http://".$setting->webip.":".$setting->webport."/".$setting->hlsfolder."/".$id."_.m3u8";
 
-    if($setting->less_secure) {
-        $file = "http://".$setting->webip.":".$setting->webport."/".$setting->hlsfolder."/".$id."_.m3u8";
-        header("location: $file");
-        die();
-
-    }
+if($stream->restream == false || $setting->less_secure) {
+    header("location: $file");
+    die();
 }
 
-$fd = fopen($url, "r");
+$fd = fopen($file, "r");
 while(!feof($fd)) {
     echo fread($fd, 1024 * 5);
     ob_flush();
