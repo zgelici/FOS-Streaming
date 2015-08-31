@@ -1,9 +1,9 @@
 <?php
-//if(isset($_SERVER['SERVER_ADDR'])) {
-//    if( $_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR'] ){
-//        die('access is not permitted');
-//    }
-//}
+if(isset($_SERVER['SERVER_ADDR'])) {
+    if( $_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR'] ){
+        die('access is not permitted');
+    }
+}
 include('config.php');
 
 $setting = Setting::first();
