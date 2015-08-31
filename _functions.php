@@ -90,7 +90,8 @@ function getTranscode($id, $streamnumber = null) {
         return $ffmpeg;
     }
 
-    $ffmpeg .= ' -probesize 15000000 -analyzeduration 9000000 -user_agent "FOS-Streaming" -i "'.$url.'"';
+    $ffmpeg .= ' -probesize 15000000 -analyzeduration 9000000 -i "'.$url.'"';
+    $ffmpeg .= ' -user_agent "FOS-Streaming"';
     $ffmpeg .= ' -c copy -c:a libvo_aacenc -b:a 128k';
     $ffmpeg .= $endofffmpeg;
     return $ffmpeg;
