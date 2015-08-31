@@ -66,6 +66,10 @@ if($stream->restream == false) {
     }
 }
 
+header("Cache-Control: no-store, no-cache,must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0",false);
+header("Pragma: no-cache");
+header('Content-type:application/force-download');
 $fd = fopen($url, "r");
 while(!feof($fd)) {
     echo fread($fd, 1024 * 5);
