@@ -120,16 +120,8 @@ function start_stream($id)
             $stream->pid = $pid;
             $stream->running = 1;
             $stream->status = 1;
+            $stream->save();
 
-            if(isset($streaminfo->streams)) {
-                foreach ((array)$streaminfo->streams as $info) {
-                    if ($info->codec_type == 'video') {
-                        $stream->video_codec_name = $info->codec_long_name;
-                    } else if ($info->codec_type == 'audio') {
-                        $stream->audio_codec_name = $info->codec_long_name;
-                    }
-                }
-            }
         } else {
             $stream->running = 1;
             $stream->status = 2;
@@ -154,18 +146,6 @@ function start_stream($id)
                     $stream->pid = $pid;
                     $stream->running = 1;
                     $stream->status = 1;
-
-                    if(isset($streaminfo->streams)) {
-                        foreach((array)$streaminfo->streams as $info ) {
-                            if($info->codec_type == 'video') {
-                                $stream->video_codec_name = $info->codec_long_name;
-                            }
-                            else if($info->codec_type == 'audio') {
-                                $stream->audio_codec_name = $info->codec_long_name;
-                            }
-                        }
-                    }
-
                 } else {
                     $stream->running = 1;
                     $stream->status = 2;
@@ -187,15 +167,6 @@ function start_stream($id)
                             $stream->running = 1;
                             $stream->status = 1;
 
-                            if(isset($streaminfo->streams)) {
-                                foreach ((array)$streaminfo->streams as $info) {
-                                    if ($info->codec_type == 'video') {
-                                        $stream->video_codec_name = $info->codec_long_name;
-                                    } else if ($info->codec_type == 'audio') {
-                                        $stream->audio_codec_name = $info->codec_long_name;
-                                    }
-                                }
-                            }
                         } else {
                             $stream->running = 1;
                             $stream->status = 2;
