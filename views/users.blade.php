@@ -34,6 +34,7 @@
                         <th>File</th>
                         <th>Last viewed channel</th>
                         <th>IP</th>
+                        <th>User agent</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -52,9 +53,14 @@
                             </td>
                             <td class="center">
                                 @if($user->exp_date != '0000-00-00')
-                                    {{ $user->exp_date }}
+                                    @if($user->exp_date <=  Carbon\Carbon::today())
+                                        <span class="label label-important">{{ $user->exp_date }}</span>
                                     @else
-                                    Unlimited
+                                        <span class="label label-success">{{ $user->exp_date }}</span>
+                                    @endif
+                                @else
+                                    <span class="label label-success">Unlimited</span>
+
                                 @endif
                             </td>
                             <td class="center">{{ $user->category_names }}</td>
@@ -80,6 +86,14 @@
                                 @else
                                     Never connected
                                 @endif
+                            </td>
+                            <td class="center">
+                                @if($user->useragent)
+                                    {{ $user->useragent }}
+                                @else
+                                    Never connected
+                                @endif
+
                             </td>
                             <td class="center">
 

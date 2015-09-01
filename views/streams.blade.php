@@ -31,7 +31,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th></th>
+                            <td class="center"><input type="checkbox" id="checkall" value=""></td>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Category</th>
@@ -45,8 +45,17 @@
 
                             <tr>
                                 <td class="center"> {{ $key+1 }}</td>
-                                <td class="center"><input type="checkbox" name="mselect[]" value="{{ $stream->id }}"></td>
-                                <td>{{ $stream->name }}</td>
+                                <td class="center"><input type="checkbox" class="check" name="mselect[]" value="{{ $stream->id }}"></td>
+                                <td>
+                                    {{ $stream->name }}
+
+                                    @if($stream->checker == 2)
+                                     <span class="label label-info">streamurl2</span>
+                                    @endif
+                                    @if($stream->checker == 3)
+                                    <span class="label label-info">streamurl3</span>
+                                    @endif
+                                </td>
                                 <td class="center"><span class="label label-{{ $stream->status_label['label'] }}">{{ $stream->status_label['text'] }}</span></td>
                                 <td class="center">{{ $stream->category ? $stream->category->name : '' }} </td>
                                 <td>{{ $stream->video_codec_name }}</td>
@@ -83,4 +92,13 @@
             No streams found
         </div>
     @endif
+@stop
+
+@section('script')
+    <script>
+        $('#checkall').on('click', function() {
+            $('.check').attr('checked', $(this).is(":checked"));
+            $.uniform.update('.check');
+        });
+    </script>
 @stop

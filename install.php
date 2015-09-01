@@ -122,6 +122,7 @@ if( isset($_GET['install'])) {
             $table->string('lastconnected_ip');
             $table->date('exp_date');
             $table->integer('last_stream');
+            $table->string('useragent');
             $table->timestamps();
         });
 
@@ -178,6 +179,8 @@ if( isset($_GET['update'])) {
         $db->schema()->hasColumn('users', 'lastconnected_ip') ? '' : $table->string('lastconnected_ip');
         $db->schema()->hasColumn('users', 'exp_date') ? '' : $table->date('exp_date');
         $db->schema()->hasColumn('users', 'last_stream') ? '' : $table->integer('last_stream');
+        $db->schema()->hasColumn('users', 'useragent') ? '' : $table->string('useragent');
+
     });
 
     $db->schema()->table('settings', function ($table) use ($db) {

@@ -45,6 +45,7 @@ ignore_user_abort(true);
 
 $user->lastconnected_ip = $ip;
 $user->last_stream = $stream->id;
+$user->useragent = $_SERVER['HTTP_USER_AGENT'];
 $user->save();
 
 
