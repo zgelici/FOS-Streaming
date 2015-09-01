@@ -23,9 +23,10 @@ function stop_stream($id)
     $stream = Stream::find($id);
     $setting = Setting::first();
 
-    shell_exec("kill -9 " . $stream->pid);
-    shell_exec("/bin/rm -r /usr/local/nginx/html/" . $setting->hlsfolder . "/" . $stream->id . "*");
-
+    if (checkPid($stream->pid)) {
+        shell_exec("kill -9 " . $stream->pid);
+        shell_exec("/bin/rm -r /usr/local/nginx/html/" . $setting->hlsfolder . "/" . $stream->id . "*");
+    }
     $stream->pid = "";
     $stream->running = 0;
     $stream->status = 0;
