@@ -38,7 +38,7 @@ if(isset($_GET['e2'])) {
 
 if(isset($_GET['m3u'])) {
     unlink('/tmp/tv_user.m3u');
-    file_put_contents('/tmp/tv_user.m3u',"", FILE_APPEND);
+    file_put_contents('/tmp/tv_user.m3u',"#EXTM3U \r\n", FILE_APPEND);
     foreach($user->categories as $category) {
         foreach($category->streams as $stream) {
             if($stream->running == 1) {
