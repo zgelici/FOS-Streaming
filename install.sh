@@ -80,6 +80,7 @@ do
 		apt-get update && apt-get upgrade -y
 		echo "done"
 		echo "##Installing needed files##"
+		rm -r /usr/src/FOS-Streaming
 		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 -y
 		apt-get install libmhash-dev libpcre3 libpcre3-dev make build-essential libxslt1-dev git -y
 		apt-get install libssl-dev -y
