@@ -10,10 +10,11 @@ select system in "${options[@]}"
 do
     case $system in
         "Install full 32bit")
-	    echo "##Update and upgrade system##"
+	echo "##Update and upgrade system##"
 		apt-get update && apt-get upgrade -y
 		echo "done"
 		echo "##Installing needed files##"
+		rm -r /usr/src/FOS-Streaming
 		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 -y
 		apt-get install libmhash-dev libpcre3 libpcre3-dev make build-essential libxslt1-dev git -y
 		apt-get install libssl-dev -y
@@ -21,7 +22,7 @@ do
 		apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server phpmyadmin php5-fpm unzip -y
 		echo "done"
 	    echo "##Installing and configuring nginx and the FOS-Streaming panel##"
-		 #**************if you already have nginx remove it from this line**************#
+		#**************if you already have nginx remove it from this line**************#
 		cd /usr/src/
 		git clone https://github.com/arut/nginx-rtmp-module.git
 		wget http://nginx.org/download/nginx-1.9.2.tar.gz
@@ -33,7 +34,6 @@ do
 		#cp /usr/src/nginx-rtmp-module/stat.xsl /usr/local/nginx
 		 #**************NGINX INSTALL END LINE**************#
 		rm -r /usr/local/nginx/conf/nginx.conf
-		rm -r /usr/src/FOS-Streaming
 		cd /usr/src/
 		git clone https://github.com/zgelici/FOS-Streaming.git
 		cd /usr/src/FOS-Streaming/
@@ -54,6 +54,10 @@ do
 		chmod -R 777 /usr/local/nginx/html/hl
 		mkdir /usr/local/nginx/html/cache
 		chmod -R 777 /usr/local/nginx/html/cache
+		chown www-data:www-data /usr/local/nginx/conf
+		wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
+        chmod +x /etc/init.d/nginx
+        update-rc.d nginx defaults
 		### database import
 		/usr/local/nginx/sbin/nginx
 		echo "done"
