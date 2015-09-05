@@ -137,6 +137,7 @@ do
 		cp ffprobe /usr/local/bin/ffprobe
 		chmod 755 /usr/local/bin/ffmpeg
 		chmod 755 /usr/local/bin/ffprobe
+		chown www-data:root /usr/local/nginx/html
 		cd /usr/src/
 		rm -r /usr/src/ffmpeg*
 		echo "installation finshed."
