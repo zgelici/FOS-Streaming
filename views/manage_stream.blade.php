@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label">Restream:</label>
+                                <label class="control-label">proxy:</label>
                                 <div class="controls">
                                     <label class="checkbox">
                                         <div class="checker" id="uniform-optionsCheckbox2"><span><input type="checkbox" name="restream" id="" value="1" {{ $stream->restream ? "checked" : ""}}></span></div>
