@@ -5,7 +5,7 @@ $databasemanagar->addConnection([
     'driver'    => 'mysql',
     'host'      => 'localhost',
     'database'  => 'xxx',
-    'username'  => 'root',
+    'username'  => 'ttt',
     'password'  => 'zzz',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
