@@ -15,11 +15,11 @@ do
 		echo "done"
 		echo "##Installing needed files##"
 		rm -r /usr/src/FOS-Streaming
-		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 -y
+		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 curl -y
 		apt-get install libmhash-dev libpcre3 libpcre3-dev make build-essential libxslt1-dev git -y
 		apt-get install libssl-dev -y
 		apt-get install git -y
-		apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server phpmyadmin php5-fpm unzip -y
+		apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server phpmyadmin php5-fpm php5-curl unzip -y
 		echo "done"
 	    echo "##Installing and configuring nginx and the FOS-Streaming panel##"
 		#**************if you already have nginx remove it from this line**************#
@@ -40,10 +40,10 @@ do
 		mv /usr/src/FOS-Streaming/nginx.conf /usr/local/nginx/conf/nginx.conf
 		mv /usr/src/FOS-Streaming/* /usr/local/nginx/html/
 		cd /usr/src/
-		wget https://getcomposer.org/installer
-		php installer
+		curl -sS https://getcomposer.org/installer | php
+		mv composer.phar /usr/local/bin/composer
 		cd /usr/local/nginx/html/
-		php /usr/src/composer.phar install
+		composer require illuminate/database
 		echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffmpeg' >> /etc/sudoers
 		echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffprobe' >> /etc/sudoers	
 		sed --in-place '/exit 0/d' /etc/rc.local
@@ -85,11 +85,11 @@ do
 		echo "done"
 		echo "##Installing needed files##"
 		rm -r /usr/src/FOS-Streaming
-		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 -y
+		apt-get install libxml2-dev libbz2-dev libcurl4-openssl-dev libmcrypt-dev libmhash2 curl -y
 		apt-get install libmhash-dev libpcre3 libpcre3-dev make build-essential libxslt1-dev git -y
 		apt-get install libssl-dev -y
 		apt-get install git -y
-		apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server phpmyadmin php5-fpm unzip -y
+		apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server phpmyadmin php5-fpm php5-curl unzip -y
 		echo "done"
 	    echo "##Installing and configuring nginx and the FOS-Streaming panel##"
 		#**************if you already have nginx remove it from this line**************#
@@ -110,10 +110,10 @@ do
 		mv /usr/src/FOS-Streaming/nginx.conf /usr/local/nginx/conf/nginx.conf
 		mv /usr/src/FOS-Streaming/* /usr/local/nginx/html/
 		cd /usr/src/
-		wget https://getcomposer.org/installer
-		php installer
+		curl -sS https://getcomposer.org/installer | php
+		mv composer.phar /usr/local/bin/composer
 		cd /usr/local/nginx/html/
-		php /usr/src/composer.phar install
+		composer require illuminate/database
 		echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffmpeg' >> /etc/sudoers
 		echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffprobe' >> /etc/sudoers	
 		sed --in-place '/exit 0/d' /etc/rc.local
