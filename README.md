@@ -2,6 +2,12 @@
 ------------
 **FOS-Streaming** -- Free IPTV panel for streaming video content
 
+
+This version will not be updated in the future.
+We have a new repository and version:
+https://github.com/zgelici/FOS-Streaming-v1
+
+
 #### Installation
 ------------
 - login with a shell client(example putty.exe)
