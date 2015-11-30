@@ -7,6 +7,9 @@ This version will not be updated in the future.
 We have a new repository and version:
 https://github.com/zgelici/FOS-Streaming-v1
 
+#### New version
+
+https://github.com/zgelici/FOS-Streaming-v1
 
 #### Installation
 ------------
