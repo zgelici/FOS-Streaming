@@ -118,6 +118,7 @@ if( isset($_GET['install'])) {
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('expiredate');
             $table->tinyInteger('active');
             $table->string('lastconnected_ip');
             $table->date('exp_date');
