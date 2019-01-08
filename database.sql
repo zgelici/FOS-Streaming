@@ -136,33 +136,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `transcodes` (
-id int(11) NOT NULL AUTO_INCREMENT,
-name varchar(30) NOT NULL,
-probesize varchar(30) DEFAULT NULL,
-analyzeduration varchar(30) DEFAULT NULL,
-video_codec varchar(30) DEFAULT NULL,
-audio_codec varchar(30) DEFAULT NULL,
-profile varchar(30) DEFAULT NULL,
-preset_values varchar(30) DEFAULT NULL,
-bufsize varchar(30) DEFAULT NULL,
-scale varchar(30) DEFAULT NULL,
-aspect_ratio varchar(30) DEFAULT NULL,
-video_bitrate varchar(30) DEFAULT NULL,
-audio_channel varchar(30) DEFAULT NULL,
-audio_bitrate varchar(30) DEFAULT NULL,
-fps varchar(30) DEFAULT NULL,
-minrate varchar(30) DEFAULT NULL,
-maxrate varchar(30) DEFAULT NULL,
-audio_sampling_rate varchar(30) DEFAULT NULL,
-crf varchar(30) DEFAULT NULL,
-threads varchar(30) DEFAULT NULL,
-deinterlance int(11) DEFAULT NULL,
-created_at timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-updated_at timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-UNIQUE KEY id (id)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
